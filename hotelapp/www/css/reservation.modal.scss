@@ -1,0 +1,20 @@
+.reservation-modal {
+    .reservation-modal__body {
+        height: 100%;
+    }
+
+    .reservation-modal__validation-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: .3rem;
+
+        .validation-date__text {
+            color: $red
+        }
+    }
+
+    .validation-date__buttons {
+        align-self: normal;
+    }
+}

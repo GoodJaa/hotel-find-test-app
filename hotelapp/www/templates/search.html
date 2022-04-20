@@ -1,0 +1,75 @@
+<ion-view view-title="Поиск гостиницы">
+  <ion-content class="hotel-search">
+    <ion-refresher pulling-text="Потяните вниз для обновления..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list list-inset dark">
+      <div class="bold padding-bottom">
+        Стоимость номера за сутки
+      </div>
+      <div class="row hotel-search__cost">
+        <label class="item item-input item-floating-label col">
+          <span class="input-label">От</span>
+          <input type="number" ng-model="filters.costFrom" placeholder="От" ng-change="hotelsSearch()">
+        </label>
+        <label class="item item-input item-floating-label col">
+          <span class="input-label">До</span>
+          <input type="number" ng-model="filters.costTo" placeholder="До" ng-change="hotelsSearch()">
+        </label>
+      </div>
+      <li class="item item-toggle">
+        <div class="bold">
+          Наличие парковки
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="filters.hasParking" ng-change="hotelsSearch()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li class="item item-toggle">
+        <div class="bold">
+          Туалет/Душ в номере
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="filters.bathroom" ng-change="hotelsSearch()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li class="item item-toggle">
+        <div class="bold">
+          Курение в номере
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="filters.smoking" ng-change="hotelsSearch()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+    </div>
+
+    <ion-list>
+      <div class="hotels-page__spinner-wrapper spinner-wrapper" ng-if="!isLoaded">
+        <ion-spinner class="android hotels-page__spinner spinner"></ion-spinner>
+      </div>
+      <ion-item class="item item-thumbnail-left" ng-repeat="hotel in filteredHotels" ng-click="showHotel(hotel)">
+        <img ng-src="{{hotel.imageUrl}}">
+        <h2>{{hotel.title}}</h2>
+        <p>{{hotel.address}}</p>
+        <p>{{hotel.phone}}</p>
+      </ion-item>
+    </ion-list>
+    <div class="card hotel-search__not-found" ng-if="isLoaded && !filteredHotels.length && !errorMessage">
+      <div class="not-found__text">По вашему запросу гостиницы не найдены</div>
+      <button class="button button-block button-assertive not-found__btn-reset" ng-click="resetFilters()">Сбросить
+        фильтр</button>
+    </div>
+    <div class="hotel-search__search-error search-error" ng-if="errorMessage">
+      <div class="hotel-search__search-error-message search-error__message">{{errorMessage}}</div>
+    </div>
+
+  </ion-content>
+</ion-view>

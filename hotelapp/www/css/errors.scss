@@ -1,0 +1,10 @@
+.search-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .search-error__message {
+        margin-top: 2rem;
+        color: $red;
+    }
+}

@@ -1,0 +1,32 @@
+.reservations-page {
+    & .reservations-page__items {
+        margin-bottom: .5rem;
+
+        .reservations-page__item {
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            margin-bottom: .5rem;
+
+            .item__content {
+                margin: 1rem 0 1rem 1rem;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .reservations-page__btn-remove {
+                border-radius: 0;
+                width: 1.5rem;
+            }
+        }
+    }
+}
+
+.platform-ios {
+    .remove-popup.popup-container .popup{
+        background-color: #000
+    }
+}

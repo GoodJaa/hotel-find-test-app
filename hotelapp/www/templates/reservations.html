@@ -1,0 +1,21 @@
+<ion-view view-title="Список бронирований">
+  <ion-content class="reservations-page">
+    <div class="reservations-page__spinner-wrapper spinner-wrapper" ng-if="!isLoaded">
+      <ion-spinner class="android reservations-page__spinner spinner"></ion-spinner>
+    </div>
+    <div class="list list-inset dark" ng-if="reservedHotels.length">
+      <div class="reservations-page__items" ng-repeat="hotel in reservedHotels">
+        <div class="item reservations-page__item" ng-repeat="date in hotel.dates">
+          <div class="item__content">
+            <h2 class="title bold">{{hotel.title}}</h2>
+            <p class="bold">{{formatDate(date.arrivalDate)}} - {{formatDate(date.exitDate)}}</p>
+            <p class="bold">Итоговая цена: {{getCost(date.arrivalDate, date.exitDate, hotel.roomCost)}}₽</p>
+          </div>
+          <button class="button button-assertive reservations-page__btn-remove" ng-click="showRemoveReservationPopup(hotel.id, $index)">
+            <i class="icon ion-android-close"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

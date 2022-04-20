@@ -1,0 +1,23 @@
+<ion-view view-title="Гостиницы">
+  <ion-content class="hotels-page">
+    <ion-refresher
+    pulling-text="Потяните вниз для обновления..."
+    on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="hotels-page__spinner-wrapper spinner-wrapper" ng-if="!isLoaded">
+      <ion-spinner class="android hotels-page__spinner spinner"></ion-spinner>
+    </div>
+    <ion-list ng-if="!errorMessage">
+      <ion-item class="item item-thumbnail-left" ng-repeat="hotel in hotels"
+        ng-click="showHotel(hotel)">
+        <img ng-src="{{hotel.imageUrl}}">
+        <h2>{{hotel.title}}</h2>
+        <p>{{hotel.address}}</p>
+        <p>{{hotel.phone}}</p>
+      </ion-item>
+    </ion-list>
+    <div class="hotels-page__search-error search-error" ng-if="errorMessage">
+      <div class="hotels-page__search-error-message search-error__message">{{errorMessage}}</div>
+    </div>
+  </ion-content>
+</ion-view>

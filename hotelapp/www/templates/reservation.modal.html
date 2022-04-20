@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-positive">
+    <h1 class="title">Бронирование в номера</h1>
+    <button class="button button-icon icon ion-android-close" ng-click="closeReservationModal()">
+    </button>
+  </ion-header-bar>
+  <ion-content class="reservation-modal">
+    <div class="item item-body reservation-modal__body">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Дата заезда</span>
+        <input type="date" ng-model="reservationData.arrivalDate" min="{{reservationData.currentDate}}" max="{{validationArrivalDate()}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Дата выезда</span>
+        <input type="date" ng-model="reservationData.exitDate" min="{{validationExitDate()}}">
+      </label>
+      <button class="button button-block button-positive" ng-if="reservationData.arrivalDate && reservationData.exitDate" ng-click="saveReservation()">
+        Забронировать
+      </button>
+      <div class="reservation-modal__validation-date" ng-if="datesException">
+        <div class="validation-date__text">Вы уже забронировали отель на эти даты</div>
+        <div class="validation-date__question">Хотите перезаписать?</div>
+        <div class="validation-date__buttons">
+          <button class="button button-block button-balanced" ng-click="rewritingReservation()">Да</button>
+          <button class="button button-block button-assertive" ng-click="cancelRewriting()">Нет</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

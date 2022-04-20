@@ -1,0 +1,43 @@
+<ion-view view-title="{{getTitle()}}">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button class="button-clear go-back">
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="hotel">
+    <div class="item item-body" style="height: 100%">
+      <img class="full-image" ng-src="{{hotel.imageUrl}}">
+      <div class="list card">
+        <div class="item row">
+          <div class="bold">Цена за номер:</div>
+          <div class="padding-left">{{hotel.roomCost}}₽</div>
+        </div>
+        <div class="item row positive-bg light">
+          <div class="bold">Наличиие парковки:</div>
+          <div class="padding-left">{{hasParking}}</div>
+        </div>
+        <div class="item row">
+          <div class="bold">Туалет/Душ:</div>
+          <div class="padding-left">{{bathroom}}</div>
+        </div>
+        <div class="item row positive-bg light">
+          <div class="bold">Курение в номере:</div>
+          <div class="padding-left">{{smoking}}</div>
+        </div>
+      </div>
+      <p>
+        {{hotel.description}}
+      </p>
+      <!-- <map current-hotel="hotel"></map> -->
+      <a href="tel:{{hotel.phone}}" class="button button-full button-balanced hotel__button hotel__button_phone"
+        style="font-size: 1.2rem; font-weight: 500; margin-top: 0">
+        <i class="icon ion-android-call"></i>
+        Позвонить
+      </a>
+      <button class="button button-full button-calm hotel__button hotel__button_form"
+        style="font-size: 1.2rem; font-weight: 500; margin-top: 0" ng-click="openReservationModal()">
+        <i class="icon ion-calendar"></i>
+        Забронировать
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
